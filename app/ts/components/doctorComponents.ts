@@ -1,6 +1,6 @@
-import {
-  Component
-} from 'angular2/core';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES} from 'angular2/common';
+import {RouteParams, RouterLink, LocationStrategy} from 'angular2/router';
 
 // Doctor class
 export class Doctor {
@@ -17,6 +17,7 @@ export class Doctor {
 @Component({
   selector: 'doctors-list',
   inputs: ['doctorsList'],
+  directives[RouterLink,CORE_DIRECTIVES]
   template: `
   <div class="row">
         <!--result start-->
@@ -36,7 +37,7 @@ export class Doctor {
                         <hr />
                         <div class="row rating-desc">
                             <div class="col-md-12">
-                                <a href="doctor-profile.html">View Details</a>
+                                <a href="doctor-profile.html" [routerLink]="['/Doctors', {id: doctor.id}]">View Details</a>
                             </div>
                         </div>
                     </div>
