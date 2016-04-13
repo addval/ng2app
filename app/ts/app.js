@@ -21,6 +21,7 @@ System.register(["angular2/platform/browser", "angular2/core"], function(exports
         execute: function() {
             Ng2App = (function () {
                 function Ng2App() {
+                    this.doctors;
                 }
                 Ng2App = __decorate([
                     core_1.Component({

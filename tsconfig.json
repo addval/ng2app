@@ -10,7 +10,9 @@
     "noImplicitAny": false
   },
   "files": [
-    "./app/ts/app.ts"
+    "./app/ts/app.ts",
+    "./app/ts/components/doctorComponents.ts",
+    "./app/ts/services/doctorService.ts"
   ],
   "exclude": [
     "node_modules"

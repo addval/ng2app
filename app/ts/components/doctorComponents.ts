@@ -3,7 +3,7 @@ import {
 } from 'angular2/core';
 
 // Doctor class
-class Doctor {
+export class Doctor {
   constructor(
     public id: number,
     public name: string,
