@@ -35,12 +35,14 @@ System.register(['angular2/core'], function(exports_1) {
                 DoctorsList = __decorate([
                     core_1.Component({
                         selector: 'doctors-list',
-                        template: "\n  <div class=\"row\">\n        <!--result start-->\n        <div class=\"col-md-6\">\n            <div class=\"well well-sm\">\n                <div class=\"row\">\n                    <div class=\"col-xs-3 col-md-3 text-center\">\n                        <img src=\"https://dermamedical.co.uk/wp-content/uploads/2015/06/Doctor.jpg\" alt=\"bootsnipp\"\n                            class=\"img-rounded img-responsive\" />\n                    </div>\n                    <div class=\"col-xs-9 col-md-9 section-box\">\n                        <h2>\n                            Doctor name\n                        </h2>\n                        <p>Gender</p>\n                        <p>Doctor Education</p>\n                        <p>Education</p>\n                        <hr />\n                        <div class=\"row rating-desc\">\n                            <div class=\"col-md-12\">\n                                <a href=\"doctor-profile.html\">View Details</a>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <!--result end-->\n    </div>\n  "
+                        inputs: ['doctorsList'],
+                        template: "\n  <div class=\"row\">\n        <!--result start-->\n        <div class=\"col-md-6\" *ngFor=\"#doctor of doctorsList\">\n            <div class=\"well well-sm\">\n                <div class=\"row\">\n                    <div class=\"col-xs-3 col-md-3 text-center\">\n                        <img [src]=\"doctor.profile_pic\" alt=\"bootsnipp\"\n                            class=\"img-rounded img-responsive\" />\n                    </div>\n                    <div class=\"col-xs-9 col-md-9 section-box\">\n                        <h2>\n                            {{doctor.title}}\n                        </h2>\n                        <p>{{doctor.gender}}</p>\n                        <p>{{doctor.education}}</p>\n                        <hr />\n                        <div class=\"row rating-desc\">\n                            <div class=\"col-md-12\">\n                                <a href=\"doctor-profile.html\">View Details</a>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <!--result end-->\n    </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], DoctorsList);
                 return DoctorsList;
             })();
+            exports_1("DoctorsList", DoctorsList);
         }
     }
 });

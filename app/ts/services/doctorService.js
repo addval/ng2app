@@ -1,5 +1,3 @@
-// import {Component} from 'angular2/core';
-// import {Http, Response} from 'angular2/http'
 System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -22,10 +20,6 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
             },
             function (_1) {}],
         execute: function() {
-            /**
-             * SpotifyService works querying the Spotify Web API
-             * https://developer.spotify.com/web-api/
-             */
             DoctorService = (function () {
                 function DoctorService(http) {
                     this.http = http;
@@ -40,7 +34,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                 DoctorService.prototype.getDoctors = function () {
                     return this.query("/doctors");
                 };
-                DoctorService.BASE_URL = "http://private-711c8-ng2app.apiary-mock.com/api/v1";
+                DoctorService.BASE_URL = "http://private-deaf6-addvalng2app.apiary-mock.com/api/v1";
                 DoctorService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])

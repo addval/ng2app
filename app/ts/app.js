@@ -1,4 +1,4 @@
-System.register(["angular2/platform/browser", "angular2/core", './services/doctorService', 'angular2/http'], function(exports_1) {
+System.register(["angular2/platform/browser", "angular2/core", 'angular2/http', './services/doctorService', './components/doctorComponents'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(["angular2/platform/browser", "angular2/core", './services/docto
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var browser_1, core_1, doctorService_1, http_1, doctorService_2;
+    var browser_1, core_1, http_1, doctorService_1, doctorService_2, doctorComponents_1;
     var Ng2App;
     return {
         setters:[
@@ -18,19 +18,18 @@ System.register(["angular2/platform/browser", "angular2/core", './services/docto
             function (core_1_1) {
                 core_1 = core_1_1;
             },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
             function (doctorService_1_1) {
                 doctorService_1 = doctorService_1_1;
                 doctorService_2 = doctorService_1_1;
             },
-            function (http_1_1) {
-                http_1 = http_1_1;
+            function (doctorComponents_1_1) {
+                doctorComponents_1 = doctorComponents_1_1;
             }],
         execute: function() {
             Ng2App = (function () {
-                // constructor() {
-                //   this.doctors =  dataService.getDoctors();
-                //   // console.log(DoctorService)
-                // }
                 function Ng2App(_doctorService) {
                     this._doctorService = _doctorService;
                 }
@@ -41,20 +40,20 @@ System.register(["angular2/platform/browser", "angular2/core", './services/docto
                         .subscribe(function (res) { return _this.renderDoctors(res); });
                 };
                 Ng2App.prototype.renderDoctors = function (res) {
-                    this.doctors = res;
-                    console.log(res);
+                    this.doctors = res.doctors_list;
                 };
                 Ng2App = __decorate([
                     core_1.Component({
                         selector: 'ng2app',
-                        template: "\n    <h2> Angular 2 Practice App </h2>\n  "
+                        directives: [doctorComponents_1.DoctorsList],
+                        template: "\n    <doctors-list\n      [doctorsList]=\"doctors\">\n    </doctors-list>\n  "
                     }), 
-                    __metadata('design:paramtypes', [doctorService_1.DoctorService])
+                    __metadata('design:paramtypes', [doctorService_2.DoctorService])
                 ], Ng2App);
                 return Ng2App;
             })();
             browser_1.bootstrap(Ng2App, [http_1.HTTP_PROVIDERS,
-                doctorService_2.DOCTOR_PROVIDERS]);
+                doctorService_1.DOCTOR_PROVIDERS]);
         }
     }
 });
