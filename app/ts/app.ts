@@ -1,5 +1,6 @@
 import { bootstrap } from "angular2/platform/browser";
 import { Component } from "angular2/core";
+import {Doctor} from './components/doctorComponents';
 
 @Component({
   selector: 'ng2app',
@@ -9,6 +10,7 @@ import { Component } from "angular2/core";
 })
 
 class Ng2App {
+  doctors: Doctor[];
 }
 
 bootstrap(Ng2App);
