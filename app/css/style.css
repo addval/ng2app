@@ -76,13 +76,16 @@ span.tags
     }
 .dropup .dropdown-menu:before 
 {
-    content: "";
-    border-top: 10px solid #34495e;
-    border-right: 10px solid transparent;
-    border-left: 10px solid transparent;
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    margin-left: -10px;
-    z-index: 10;
-    }
+  content: "";
+  border-top: 10px solid #34495e;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  margin-left: -10px;
+  z-index: 10;
+}
+.img-rounded{
+  max-height: 100px;
+}
