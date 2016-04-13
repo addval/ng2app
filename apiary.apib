@@ -1,0 +1,78 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# ng2app
+
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+# Group Doctor List - GET Requests
+
+## Show Doctor List [/api/v1/doctors]
+
+### Show Doctor List [GET]
+
++ Response 200 (application/json)
+
+        {
+            "success": true,
+            "message": "Data fetched successfully",
+            "doctors_list": [
+                {   "id": 1,
+                    "title": "Foo Bar",
+                    "gender": Female,
+                    "bio": "Dental Solutions Is A Dental Clinic Based In Bangalore, India & We Offer High Quality Yet Low Cost Dental Clinic Experience. Your Quest For A Dentist Abroad Is Over! Equipped With State Of The Art Infrastructure, Our Laser Dentist Who Specializes In Laser Teeth Whitening,laser Dentistry,offers Complete Oral And Dental Care.our Team Consists Of Experienced Periodontist,prosthodontist,well Qualified Dental Surgeons,also Dentist From All Other Specialities Like Orthodontist,cosmetic Surgeons Are Available With Us",
+                    "speciality": "Allergist",
+                    "education": "M.B.B.S."
+                },
+                
+                {   
+                    "id": 2,
+                    "title": "New Doc",
+                    "gender": Male,
+                    "bio": "Dental Solutions Is A Dental Clinic Based In Bangalore, India & We Offer High Quality Yet Low Cost Dental Clinic Experience. Your Quest For A Dentist Abroad Is Over! Equipped With State Of The Art Infrastructure, Our Laser Dentist Who Specializes In Laser Teeth Whitening,laser Dentistry,offers Complete Oral And Dental Care.our Team Consists Of Experienced Periodontist,prosthodontist,well Qualified Dental Surgeons,also Dentist From All Other Specialities Like Orthodontist,cosmetic Surgeons Are Available With Us",
+                    "speciality": "Dentist",
+                    "education": "B.D.S."
+                }
+            ]    
+                
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "success": success,
+            "message": "Fetched data successfully"
+        }
+
+## Show Doctor's Patients List [/api/v1/doctors/{doctor_id}/patients_list]
+
+Doctor's Patients list on Doctor's Dashboard
+
+### Show Doctor's Patients List [GET]
+
++ Response 200 (application/json)
+
+        {
+            "success": true,
+            "message": "Patients list fetched successfully",
+            "patients": 
+            [
+                {
+                    "patient_id":1,
+                    "status":"Scheduled",
+                    "patient_name":"Test1 Case1",
+                    "patient_email":"patient1@gmail.com",
+                    "patient_phone_number":"911231231231",
+                    "patient_age":23,
+                    "patient_gender":"Female"
+                },
+                {
+                    "patient_name":"Sample Pat",
+                    "patient_id":130,
+                    "patient_age":12,
+                    "patient_gender":"Male",
+                    "patient_email":"asda@dasdas.com",
+                    "patient_phone_number": "92342424232"
+                }
+            ]
+        }
