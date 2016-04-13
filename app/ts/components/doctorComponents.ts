@@ -17,7 +17,7 @@ export class Doctor {
 @Component({
   selector: 'doctors-list',
   inputs: ['doctorsList'],
-  directives[RouterLink,CORE_DIRECTIVES]
+  directives:[RouterLink,CORE_DIRECTIVES],
   template: `
   <div class="row">
         <!--result start-->
