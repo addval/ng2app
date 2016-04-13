@@ -2,14 +2,14 @@
 <html>
   <head>
     <title>Angular 2 Practice App</title>
-    
+
     <!-- Libraries -->
     <script src="node_modules/es6-shim/es6-shim.js"></script>
     <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-  
+
   </head>
   <body>
     <script>
@@ -21,7 +21,7 @@
           }
         }
       });
-      System.import('app.js')
+      System.import('app/ts/app.js')
             .then(null, console.error.bind(console));
     </script>
 
