@@ -22,7 +22,7 @@ import {DoctorService} from '.././services/doctorService';
         <div class="col-xs-12 col-sm-4 emphasis" *ngFor="#patient of patients">
            <img src="http://gomerblog.com/wp-content/uploads/2015/12/angry-patient.jpg" alt="..." class="img-thumbnail">
            <h4>{{patient.patient_name}}</h4>
-           <p><a href="patient-profile">View Profile</a></p>
+           <p><a (click)="showProfile(patient.id)">View Profile</a></p>
         </div>
 
     </div>
@@ -56,4 +56,7 @@ export class DoctorProfile implements OnInit{
       console.log(this.doctorDetail)
   }
 
+  showProfile(n): void{
+    this._router.navigate(['PatientProfile', {id: n}])
+  }
 }

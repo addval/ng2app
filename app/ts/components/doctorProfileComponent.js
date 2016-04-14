@@ -51,13 +51,16 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '.././se
                     this.doctorDetail = res1.doctor;
                     console.log(this.doctorDetail);
                 };
+                DoctorProfile.prototype.showProfile = function (n) {
+                    this._router.navigate(['PatientProfile', { id: n }]);
+                };
                 DoctorProfile = __decorate([
                     core_1.Component({
                         selector: 'doctor-profile',
                         inputs: ['doctorProfile'],
                         providers: [doctorService_1.DoctorService],
                         directives: [router_1.RouterLink, common_1.CORE_DIRECTIVES],
-                        template: "\n    <div>\n    <h2>{{doctorDetail.title}}</h2>\n                        <p><strong>About: </strong> {{doctorDetail.bio}} </p>\n                        <p><strong>Speciality: </strong> {{doctorDetail.speciality}} </p>\n    </div>\n    <div class=\"col-xs-12 divider text-center\">\n       <h2>Patient List</h2>\n    </div>\n    <div class=\"col-xs-12  text-center\">\n        <div class=\"col-xs-12 col-sm-4 emphasis\" *ngFor=\"#patient of patients\">\n           <img src=\"http://gomerblog.com/wp-content/uploads/2015/12/angry-patient.jpg\" alt=\"...\" class=\"img-thumbnail\">\n           <h4>{{patient.patient_name}}</h4>\n           <p><a href=\"patient-profile\">View Profile</a></p>\n        </div>\n\n    </div>\n    "
+                        template: "\n    <div>\n    <h2>{{doctorDetail.title}}</h2>\n                        <p><strong>About: </strong> {{doctorDetail.bio}} </p>\n                        <p><strong>Speciality: </strong> {{doctorDetail.speciality}} </p>\n    </div>\n    <div class=\"col-xs-12 divider text-center\">\n       <h2>Patient List</h2>\n    </div>\n    <div class=\"col-xs-12  text-center\">\n        <div class=\"col-xs-12 col-sm-4 emphasis\" *ngFor=\"#patient of patients\">\n           <img src=\"http://gomerblog.com/wp-content/uploads/2015/12/angry-patient.jpg\" alt=\"...\" class=\"img-thumbnail\">\n           <h4>{{patient.patient_name}}</h4>\n           <p><a (click)=\"showProfile(patient.id)\">View Profile</a></p>\n        </div>\n\n    </div>\n    "
                     }), 
                     __metadata('design:paramtypes', [doctorService_1.DoctorService, router_1.RouteParams])
                 ], DoctorProfile);
