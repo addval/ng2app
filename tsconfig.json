@@ -13,11 +13,13 @@
     "./app/ts/app.ts",
     "./app/ts/components/doctorComponents.ts",
     "./app/ts/components/doctorProfileComponent.ts",
+    "./app/ts/components/patientProfileComponent.ts",
     "./app/ts/services/doctorService.ts",
     "./app/ts/components/editPatientProfileComponent.ts",
     "./app/ts/services/patientService.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "markups"
   ]
 }
