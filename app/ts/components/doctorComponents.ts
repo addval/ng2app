@@ -3,6 +3,7 @@ import { CORE_DIRECTIVES } from 'angular2/common';
 import { Router } from 'angular2/router';
 import { RouteParams, RouterLink, LocationStrategy } from 'angular2/router';
 import { DoctorService } from '.././services/doctorService';
+import {DoctorProfile} from './components/doctorProfileComponent';
 
 // Doctor class
 export class Doctor {
@@ -37,7 +38,7 @@ export class Doctor {
               <hr/>
               <div class="row rating-desc">
                 <div class="col-md-12">
-                  <a  (click)="showProfile(doctor.id)">View Details</a>
+                  <a (click)="showProfile(doctor.id)">View Details</a>
                 </div>
               </div>
             </div>

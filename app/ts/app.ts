@@ -7,6 +7,7 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 import {Doctor} from './components/doctorComponents';
 import {DoctorsList} from './components/doctorComponents';
 import {DoctorProfile} from './components/doctorProfileComponent';
+import {PatientProfile} from './components/patientProfileComponent';
 
 // Routes
 import {
@@ -17,7 +18,8 @@ import {
 } from 'angular2/router';
 @RouteConfig([
   { path: '/doctors', name: 'Doctors', component: DoctorsList, useAsDefault:true },
-  { path: '/doctorsprofile/:id', name: 'DoctorProfile', component: DoctorProfile}
+  { path: '/doctorsprofile/:id', name: 'DoctorProfile', component: DoctorProfile},
+  { path: '/patientsprofile/:id', name: 'PatientProfile', component: PatientProfile}
 ])
 
 // Main App

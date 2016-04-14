@@ -1,7 +1,8 @@
 import { Component, OnInit } from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
-import { RouteParams, RouterLink, LocationStrategy } from 'angular2/router';
+import { RouteParams, RouterLink, LocationStrategy, Router } from 'angular2/router';
 import { DoctorService } from '.././services/doctorService';
+import {PatientProfile} from './components/patientProfileComponent';
 
 @Component({
   selector: 'doctor-profile',
@@ -22,7 +23,7 @@ import { DoctorService } from '.././services/doctorService';
       <div class="col-xs-12 col-sm-4 emphasis" *ngFor="#patient of patients">
         <img src="http://gomerblog.com/wp-content/uploads/2015/12/angry-patient.jpg" alt="..." class="img-thumbnail">
         <h4>{{patient.patient_name}}</h4>
-        <p><a [routerLink]="['DoctorProfile']">View Profile</a></p>
+        <p><a (click)="showProfile(patient.id)">View Profile</a></p>
       </div>
     </div>
   `
@@ -54,5 +55,9 @@ export class DoctorProfile implements OnInit{
   renderDoctorDetail(res1: any): void {
     this.doctorDetail = res1.doctor;
       console.log(this.doctorDetail)
+  }
+
+  showProfile(n): void{
+    this._router.navigate(['PatientProfile', {id: n}])
   }
 }
