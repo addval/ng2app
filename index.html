@@ -28,33 +28,31 @@
   </head>
   <base href = "/">
   <body>
-  <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-static-top">
       <div class="container text-center">
        <h4>ng2app</h4>
       </div>
-  </nav>
-    <div class="container">
-       <ng2app></ng2app>
+    </nav>
+      <div class="container">
+        <ng2app></ng2app>
+      </div>
 
-    </div>
-
-    <script>
-      System.config({
-        packages: {
-          app: {
-            format: 'register',
-            defaultExtension: 'js'
+      <script>
+        System.config({
+          packages: {
+            app: {
+              format: 'register',
+              defaultExtension: 'js'
+            }
           }
-        }
-      });
-      System.import('app/ts/app.js')
-            .then(null, console.error.bind(console));
-    </script>
+        });
+        System.import('app/ts/app.js')
+              .then(null, console.error.bind(console));
+      </script>
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="app/scripts/bootstrap.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="app/scripts/bootstrap.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
   </body>
 </html>
