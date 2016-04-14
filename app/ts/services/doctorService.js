@@ -56,4 +56,4 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
 });
 // export var DOCTOR_PROVIDERS: Array<any> = [
 //   provide(DoctorService, {useClass: DoctorService})
-// ];
+// ]; 

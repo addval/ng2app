@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '.././se
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, doctorService_1, router_2;
+    var core_1, common_1, router_1, router_2, doctorService_1;
     var Doctor, DoctorsList;
     return {
         setters:[
@@ -55,17 +55,16 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '.././se
                     this.doctors = res.doctors_list;
                 };
                 DoctorsList.prototype.showProfile = function (n) {
-                    // console.log(this.doctor.id)
                     this._router.navigate(['DoctorProfile', { id: n }]);
                 };
                 DoctorsList = __decorate([
                     core_1.Component({
                         selector: 'doctors-list',
                         providers: [doctorService_1.DoctorService],
-                        directives: [router_1.RouterLink, common_1.CORE_DIRECTIVES],
-                        template: "\n  <div class=\"row\">\n        <!--result start-->\n        <div class=\"col-md-6\" *ngFor=\"#doctor of doctors\">\n            <div class=\"well well-sm\">\n                <div class=\"row\">\n                    <div class=\"col-xs-3 col-md-3 text-center\">\n                        <img [src]=\"doctor.profile_pic\" alt=\"bootsnipp\"\n                            class=\"img-rounded img-responsive\" />\n                    </div>\n                    <div class=\"col-xs-9 col-md-9 section-box\">\n                        <h2>\n                            {{doctor.title}}\n                        </h2>\n                        <p>{{doctor.gender}}</p>\n                        <p>{{doctor.education}}</p>\n                        <hr />\n                        <div class=\"row rating-desc\">\n                            <div class=\"col-md-12\">\n                                <a  (click) = \"showProfile(doctor.id)\">View Details</a>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <!--result end-->\n    </div>\n  "
+                        directives: [router_2.RouterLink, common_1.CORE_DIRECTIVES],
+                        template: "\n    <div class=\"row\">\n      <!--result start-->\n      <div class=\"col-md-6\" *ngFor=\"#doctor of doctors\">\n        <div class=\"well well-sm\">\n          <div class=\"row\">\n            <div class=\"col-xs-3 col-md-3 text-center\">\n              <img [src]=\"doctor.profile_pic\" alt=\"bootsnipp\" class=\"img-rounded img-responsive\"/>\n            </div>\n            <div class=\"col-xs-9 col-md-9 section-box\">\n              <h2> {{ doctor.title }} </h2>\n              <p>{{ doctor.gender }}</p>\n              <p>{{ doctor.education }}</p>\n              <hr/>\n              <div class=\"row rating-desc\">\n                <div class=\"col-md-12\">\n                  <a  (click)=\"showProfile(doctor.id)\">View Details</a>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <!--result end-->\n    </div>\n  "
                     }), 
-                    __metadata('design:paramtypes', [doctorService_1.DoctorService, router_2.Router])
+                    __metadata('design:paramtypes', [doctorService_1.DoctorService, router_1.Router])
                 ], DoctorsList);
                 return DoctorsList;
             })();
