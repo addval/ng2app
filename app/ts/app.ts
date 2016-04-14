@@ -4,7 +4,7 @@ import { Component, OnInit, provide } from "angular2/core";
 import { HTTP_PROVIDERS } from 'angular2/http';
 
 // Services
-import { DoctorsList } from './components/doctorComponents';
+import { DoctorsList } from './components/doctorListComponents';
 import { DoctorProfile } from './components/doctorProfileComponent';
 import { PatientProfile } from './components/patientProfileComponent';
 
