@@ -9,7 +9,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, http_1;
-    var DoctorService, DOCTOR_PROVIDERS;
+    var DoctorService;
     return {
         setters:[
             function (core_1_1) {
@@ -21,20 +21,26 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
             function (_1) {}],
         execute: function() {
             DoctorService = (function () {
+                // static BASE_URL: string = `http://private-deaf6-addvalng2app.apiary-mock.com/api/v1`;
                 function DoctorService(http) {
                     this.http = http;
                 }
-                DoctorService.prototype.query = function (URL, params) {
-                    var queryURL = "" + DoctorService.BASE_URL + URL;
-                    if (params) {
-                        queryURL = queryURL + "?" + params.join('&');
-                    }
-                    return this.http.request(queryURL).map(function (res) { return res.json(); });
-                };
+                // query(URL: string, params?: Array<string>): Observable<any[]> {
+                //   let queryURL: string = `${DoctorService.BASE_URL}${URL}`;
+                //   if (params) {
+                //     queryURL = `${queryURL}?${params.join('&')}`;
+                //   }
+                //   return this.http.request(queryURL).map((res: any) => res.json());
+                // }
                 DoctorService.prototype.getDoctors = function () {
-                    return this.query("/doctors");
+                    return this.http.get("http://private-deaf6-addvalng2app.apiary-mock.com/api/v1/doctors")
+                        .map(function (result) { return result.json(); });
                 };
-                DoctorService.BASE_URL = "http://private-deaf6-addvalng2app.apiary-mock.com/api/v1";
+                DoctorService.prototype.getDoctorPatients = function (id) {
+                    console.log(id);
+                    return this.http.get("http://private-deaf6-addvalng2app.apiary-mock.com/api/v1/doctors/" + id + "/patients_list")
+                        .map(function (result) { return result.json(); });
+                };
                 DoctorService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])
@@ -42,9 +48,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                 return DoctorService;
             })();
             exports_1("DoctorService", DoctorService);
-            exports_1("DOCTOR_PROVIDERS", DOCTOR_PROVIDERS = [
-                core_1.provide(DoctorService, { useClass: DoctorService })
-            ]);
         }
     }
 });
+// export var DOCTOR_PROVIDERS: Array<any> = [
+//   provide(DoctorService, {useClass: DoctorService})
+// ];

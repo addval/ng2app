@@ -1,6 +1,10 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {RouteParams, RouterLink, LocationStrategy} from 'angular2/router';
+import {DoctorService} from '.././services/doctorService';
+import {
+  Router
+} from 'angular2/router';
 
 // Doctor class
 export class Doctor {
@@ -16,12 +20,12 @@ export class Doctor {
 
 @Component({
   selector: 'doctors-list',
-  inputs: ['doctorsList'],
+  providers: [DoctorService],
   directives:[RouterLink,CORE_DIRECTIVES],
   template: `
   <div class="row">
         <!--result start-->
-        <div class="col-md-6" *ngFor="#doctor of doctorsList">
+        <div class="col-md-6" *ngFor="#doctor of doctors">
             <div class="well well-sm">
                 <div class="row">
                     <div class="col-xs-3 col-md-3 text-center">
@@ -37,7 +41,7 @@ export class Doctor {
                         <hr />
                         <div class="row rating-desc">
                             <div class="col-md-12">
-                                <a href="doctor-profile.html" [routerLink]="['/Doctors', {id: doctor.id}]">View Details</a>
+                                <a  (click) = "showProfile(doctor.id)">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -49,10 +53,28 @@ export class Doctor {
   `
 
 })
-export class DoctorsList {
-  doctorsList: Doctor[];
-}
+export class DoctorsList implements OnInit{
+  doctors: Doctor[];
+  public doctor:Doctor = null;
 
+  constructor(public _doctorService: DoctorService, private _router: Router){
+  }
+
+  ngOnInit(): void {
+    this._doctorService
+      .getDoctors()
+      .subscribe((res: any) => this.renderDoctors(res));
+  }
+
+  renderDoctors(res: any): void {
+    this.doctors = res.doctors_list;
+  }
+
+  showProfile(n): void{
+    // console.log(this.doctor.id)
+    this._router.navigate(['DoctorProfile', {id: n}])
+  }
+}
 
 
 

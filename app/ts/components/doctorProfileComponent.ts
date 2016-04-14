@@ -1,12 +1,45 @@
 import { Component, OnInit } from 'angular2/core';
+import {CORE_DIRECTIVES} from 'angular2/common';
+import {RouteParams, RouterLink, LocationStrategy} from 'angular2/router';
+import {DoctorService} from '.././services/doctorService';
 
 @Component({
     selector: 'doctor-profile',
-    templateUrl: 'path/name.component.html'
+    inputs: ['doctorProfile'],
+    providers: [DoctorService],
+    directives:[RouterLink,CORE_DIRECTIVES],
+    template:
+    `
+    <div>Doctor detail will come here</div>
+    <div class="col-xs-12 divider text-center">
+       <h2>Patient List</h2>
+    </div>
+    <div class="col-xs-12  text-center">
+        <div class="col-xs-12 col-sm-4 emphasis" *ngFor="#patient of patients">
+           <img src="http://gomerblog.com/wp-content/uploads/2015/12/angry-patient.jpg" alt="..." class="img-thumbnail">
+           <h4>{{patient.patient_name}}</h4>
+           <p><a href="patient-profile">View Profile</a></p>
+        </div>
+
+    </div>
+    `
 })
-export class DoctorProfile implements OnInit {
-    constructor() { }
+export class DoctorProfile implements OnInit{
+	public docProfileId = "";
+	public patients = [];
+	constructor(public _doctorService: DoctorService, private _routeparams: RouteParams){}
 
-    ngOnInit() { }
+	ngOnInit():any{
+		this.docProfileId = this._routeparams.get("id");
+		console.log(this.docProfileId);
 
+		this._doctorService
+      .getDoctorPatients(this.docProfileId)
+      .subscribe((res: any) => this.renderPatients(res));
+	}
+
+	renderPatients(res1: any): void {
+    this.patients = res1.patients;
+    console.log(res1);
+  }
 }
