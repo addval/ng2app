@@ -2,10 +2,10 @@ import { Component, OnInit } from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {RouteParams, RouterLink, LocationStrategy} from 'angular2/router';
 import {DoctorService} from '.././services/doctorService';
+import {Router} from 'angular2/router';
 
 @Component({
     selector: 'doctor-profile',
-    inputs: ['doctorProfile'],
     providers: [DoctorService],
     directives:[RouterLink,CORE_DIRECTIVES],
     template:
@@ -22,7 +22,7 @@ import {DoctorService} from '.././services/doctorService';
         <div class="col-xs-12 col-sm-4 emphasis" *ngFor="#patient of patients">
            <img src="http://gomerblog.com/wp-content/uploads/2015/12/angry-patient.jpg" alt="..." class="img-thumbnail">
            <h4>{{patient.patient_name}}</h4>
-           <p><a href="patient-profile">View Profile</a></p>
+           <p><a (click) = "editPatientProfile(patient.patient_id)">View Profile</a></p>
         </div>
 
     </div>
@@ -32,7 +32,7 @@ export class DoctorProfile implements OnInit{
 	public docProfileId = "";
 	public patients = [];
 	public doctorDetail = {};
-	constructor(public _doctorService: DoctorService, private _routeparams: RouteParams){}
+	constructor(public _doctorService: DoctorService, private _routeparams: RouteParams, private _router: Router){}
 
 	ngOnInit():any{
 		this.docProfileId = this._routeparams.get("id");
@@ -49,11 +49,17 @@ export class DoctorProfile implements OnInit{
 
 	renderPatients(res1: any): void {
     this.patients = res1.patients;
+    console.log(res1.patients)
   }
 
   renderDoctorDetail(res1: any): void {
     this.doctorDetail = res1.doctor;
       console.log(this.doctorDetail)
+  }
+
+  editPatientProfile(n): void{
+    // console.log(this.doctor.id)
+    this._router.navigate(['EditPatientProfile', {id: n}])
   }
 
 }

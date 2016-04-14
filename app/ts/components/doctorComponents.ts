@@ -2,9 +2,7 @@ import {Component, OnInit} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {RouteParams, RouterLink, LocationStrategy} from 'angular2/router';
 import {DoctorService} from '.././services/doctorService';
-import {
-  Router
-} from 'angular2/router';
+import {Router} from 'angular2/router';
 
 // Doctor class
 export class Doctor {
