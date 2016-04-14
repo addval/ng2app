@@ -1,7 +1,7 @@
-# Angular 2 Practice App
+## Angular 2 Practice App
 
-#### To setup Project:
-  1. Clone the repository
+#### To setup project:
+  1. git clone git@github.com:addval/ng2app.git
   2. cd ng2app
   3. npm install
   4. npm run go
