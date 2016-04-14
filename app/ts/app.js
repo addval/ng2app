@@ -47,12 +47,13 @@ System.register(["angular2/platform/browser", "angular2/core", 'angular2/http', 
                         selector: 'ng2app',
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [router_1.ROUTER_PROVIDERS],
-                        template: "\n\n    <router-outlet></router-outlet>\n  "
+                        template: "\n    <router-outlet></router-outlet>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], Ng2App);
                 return Ng2App;
             })();
+            // Bootstrap App
             browser_1.bootstrap(Ng2App, [http_1.HTTP_PROVIDERS,
                 router_1.ROUTER_PROVIDERS]);
         }
