@@ -26,43 +26,41 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '.././se
             }],
         execute: function() {
             DoctorProfile = (function () {
-                function DoctorProfile(_doctorService, _routeparams) {
+                function DoctorProfile(_doctorService, _routeparams, _router) {
                     this._doctorService = _doctorService;
                     this._routeparams = _routeparams;
-                    this.docProfileId = "";
+                    this._router = _router;
+                    this.doctorId = "";
                     this.patients = [];
                     this.doctorDetail = {};
                 }
                 DoctorProfile.prototype.ngOnInit = function () {
                     var _this = this;
-                    this.docProfileId = this._routeparams.get("id");
-                    console.log(this.docProfileId);
+                    this.doctorId = this._routeparams.get("id");
                     this._doctorService
-                        .getDoctorPatients(this.docProfileId)
+                        .getDoctorPatients(this.doctorId)
                         .subscribe(function (res) { return _this.renderPatients(res); });
                     this._doctorService
-                        .getDoctorDetail(this.docProfileId)
+                        .getDoctorDetail(this.doctorId)
                         .subscribe(function (res) { return _this.renderDoctorDetail(res); });
                 };
-                DoctorProfile.prototype.renderPatients = function (res1) {
-                    this.patients = res1.patients;
+                DoctorProfile.prototype.renderPatients = function (result) {
+                    this.patients = result.patients;
                 };
-                DoctorProfile.prototype.renderDoctorDetail = function (res1) {
-                    this.doctorDetail = res1.doctor;
-                    console.log(this.doctorDetail);
+                DoctorProfile.prototype.renderDoctorDetail = function (result) {
+                    this.doctorDetail = result.doctor;
                 };
-                DoctorProfile.prototype.showProfile = function (n) {
+                DoctorProfile.prototype.showPatientProfile = function (n) {
                     this._router.navigate(['PatientProfile', { id: n }]);
                 };
                 DoctorProfile = __decorate([
                     core_1.Component({
                         selector: 'doctor-profile',
-                        inputs: ['doctorProfile'],
                         providers: [doctorService_1.DoctorService],
                         directives: [router_1.RouterLink, common_1.CORE_DIRECTIVES],
-                        template: "\n    <div>\n    <h2>{{doctorDetail.title}}</h2>\n      <p><strong>About: </strong> {{doctorDetail.bio}} </p>\n      <p><strong>Speciality: </strong> {{doctorDetail.speciality}} </p>\n    </div>\n    <div class=\"col-xs-12 divider text-center\">\n      <h2>Patient List</h2>\n    </div>\n    <div class=\"col-xs-12  text-center\">\n      <div class=\"col-xs-12 col-sm-4 emphasis\" *ngFor=\"#patient of patients\">\n        <img src=\"http://gomerblog.com/wp-content/uploads/2015/12/angry-patient.jpg\" alt=\"...\" class=\"img-thumbnail\">\n        <h4>{{patient.patient_name}}</h4>\n        <p><a (click)=\"showProfile(patient.id)\">View Profile</a></p>\n      </div>\n    </div>\n  "
+                        template: "\n    <div>\n    <h2>{{doctorDetail.title}}</h2>\n      <p><strong>About: </strong> {{doctorDetail.bio}} </p>\n      <p><strong>Speciality: </strong> {{doctorDetail.speciality}} </p>\n    </div>\n    <div class=\"col-xs-12 divider text-center\">\n      <h2>Patient List</h2>\n    </div>\n    <div class=\"col-xs-12  text-center\">\n      <div class=\"col-xs-12 col-sm-4 emphasis\" *ngFor=\"#patient of patients\">\n        <img src=\"http://gomerblog.com/wp-content/uploads/2015/12/angry-patient.jpg\" alt=\"...\" class=\"img-thumbnail\">\n        <h4>{{patient.patient_name}}</h4>\n        <p><a (click)=\"showPatientProfile(patient.id)\">View Profile</a></p>\n      </div>\n    </div>\n  "
                     }), 
-                    __metadata('design:paramtypes', [doctorService_1.DoctorService, router_1.RouteParams])
+                    __metadata('design:paramtypes', [doctorService_1.DoctorService, router_1.RouteParams, router_1.Router])
                 ], DoctorProfile);
                 return DoctorProfile;
             })();

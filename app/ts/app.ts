@@ -1,13 +1,12 @@
 // Angular Modules
 import { bootstrap } from "angular2/platform/browser";
 import { Component, OnInit, provide } from "angular2/core";
-import {HTTP_PROVIDERS} from 'angular2/http';
+import { HTTP_PROVIDERS } from 'angular2/http';
 
 // Services
-import {Doctor} from './components/doctorComponents';
-import {DoctorsList} from './components/doctorComponents';
-import {DoctorProfile} from './components/doctorProfileComponent';
-import {PatientProfile} from './components/patientProfileComponent';
+import { DoctorsList } from './components/doctorComponents';
+import { DoctorProfile } from './components/doctorProfileComponent';
+import { PatientProfile } from './components/patientProfileComponent';
 
 // Routes
 import {
@@ -17,16 +16,16 @@ import {
   RouteConfig
 } from 'angular2/router';
 @RouteConfig([
-  { path: '/doctors', name: 'Doctors', component: DoctorsList, useAsDefault:true },
-  { path: '/doctorsprofile/:id', name: 'DoctorProfile', component: DoctorProfile},
-  { path: '/patientsprofile/:id', name: 'PatientProfile', component: PatientProfile}
+  { path: '/doctors', name: 'DoctorsList', component: DoctorsList, useAsDefault:true },
+  { path: '/doctorsprofile/:id', name: 'DoctorProfile', component: DoctorProfile },
+  { path: '/patientsprofile/:id', name: 'PatientProfile', component: PatientProfile }
 ])
 
 // Main App
 @Component({
   selector: 'ng2app',
-  directives: [ROUTER_DIRECTIVES],
-  providers:[ROUTER_PROVIDERS],
+  directives: [ ROUTER_DIRECTIVES ],
+  providers:[ ROUTER_PROVIDERS ],
   template:
   `
     <router-outlet></router-outlet>
@@ -37,5 +36,7 @@ class Ng2App{
 
 // Bootstrap App
 bootstrap(Ng2App,
-  [HTTP_PROVIDERS,
-  ROUTER_PROVIDERS]);
+  [ HTTP_PROVIDERS,
+    ROUTER_PROVIDERS
+  ]
+);

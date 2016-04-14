@@ -32,23 +32,14 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '.././se
                     this.patientId = "";
                 }
                 PatientProfile.prototype.ngOnInit = function () {
-                    var _this = this;
-                    this.patientProfileId = this._routeparams.get("id");
-                    console.log("h1");
-                    this._patientService
-                        .getPatientDetail(this.patientProfileId)
-                        .subscribe(function (res) { return _this.renderPatientDetail(res); });
-                };
-                PatientProfile.prototype.renderPatients = function (res1) {
-                    this.patients = res1.patients;
+                    this.patientId = this._routeparams.get("id");
                 };
                 PatientProfile = __decorate([
                     core_1.Component({
                         selector: 'patient-profile',
-                        inputs: ['patientProfile'],
                         providers: [patientService_1.PatientService],
                         directives: [router_1.RouterLink, common_1.CORE_DIRECTIVES],
-                        template: "\n    <h1>hello</h1>\n\n    "
+                        template: "\n    <h1>Patient Profile ID: {{patientID}}</h1>\n  "
                     }), 
                     __metadata('design:paramtypes', [patientService_1.PatientService, router_1.RouteParams])
                 ], PatientProfile);

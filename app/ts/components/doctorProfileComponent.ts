@@ -2,13 +2,11 @@ import { Component, OnInit } from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
 import { RouteParams, RouterLink, LocationStrategy, Router } from 'angular2/router';
 import { DoctorService } from '.././services/doctorService';
-import {PatientProfile} from './components/patientProfileComponent';
 
 @Component({
   selector: 'doctor-profile',
-  inputs: [ 'doctorProfile' ],
   providers: [ DoctorService ],
-  directives:[ RouterLink, CORE_DIRECTIVES ],
+  directives: [ RouterLink, CORE_DIRECTIVES ],
   template:
   `
     <div>
@@ -23,41 +21,39 @@ import {PatientProfile} from './components/patientProfileComponent';
       <div class="col-xs-12 col-sm-4 emphasis" *ngFor="#patient of patients">
         <img src="http://gomerblog.com/wp-content/uploads/2015/12/angry-patient.jpg" alt="..." class="img-thumbnail">
         <h4>{{patient.patient_name}}</h4>
-        <p><a (click)="showProfile(patient.id)">View Profile</a></p>
+        <p><a (click)="showPatientProfile(patient.id)">View Profile</a></p>
       </div>
     </div>
   `
 })
 export class DoctorProfile implements OnInit{
-  public docProfileId = "";
+  public doctorId = "";
   public patients = [];
   public doctorDetail = {};
 
-  constructor(public _doctorService: DoctorService, private _routeparams: RouteParams){}
+  constructor(public _doctorService: DoctorService, private _routeparams: RouteParams, private _router: Router){}
 
   ngOnInit():any{
-    this.docProfileId = this._routeparams.get("id");
-    console.log(this.docProfileId);
+    this.doctorId = this._routeparams.get("id");
 
     this._doctorService
-      .getDoctorPatients(this.docProfileId)
+      .getDoctorPatients(this.doctorId)
       .subscribe((res: any) => this.renderPatients(res));
 
     this._doctorService
-      .getDoctorDetail(this.docProfileId)
+      .getDoctorDetail(this.doctorId)
       .subscribe((res:any) => this.renderDoctorDetail(res));
   }
 
-  renderPatients(res1: any): void {
-    this.patients = res1.patients;
+  renderPatients(result: any): void {
+    this.patients = result.patients;
   }
 
-  renderDoctorDetail(res1: any): void {
-    this.doctorDetail = res1.doctor;
-      console.log(this.doctorDetail)
+  renderDoctorDetail(result: any): void {
+    this.doctorDetail = result.doctor;
   }
 
-  showProfile(n): void{
+  showPatientProfile(n): void{
     this._router.navigate(['PatientProfile', {id: n}])
   }
 }

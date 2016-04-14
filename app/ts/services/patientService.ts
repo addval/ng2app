@@ -1,10 +1,11 @@
-import {Injectable} from 'angular2/core';
-import {Http} from 'angular2/http';
+import { Injectable } from 'angular2/core';
+import { Http } from 'angular2/http';
 
 import 'rxjs/Rx';
 
 @Injectable()
 export class PatientService {
+
   constructor(public http: Http) {
   }
 

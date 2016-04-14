@@ -39,7 +39,7 @@ System.register(["angular2/platform/browser", "angular2/core", 'angular2/http', 
                 }
                 Ng2App = __decorate([
                     router_1.RouteConfig([
-                        { path: '/doctors', name: 'Doctors', component: doctorComponents_1.DoctorsList, useAsDefault: true },
+                        { path: '/doctors', name: 'DoctorsList', component: doctorComponents_1.DoctorsList, useAsDefault: true },
                         { path: '/doctorsprofile/:id', name: 'DoctorProfile', component: doctorProfileComponent_1.DoctorProfile },
                         { path: '/patientsprofile/:id', name: 'PatientProfile', component: patientProfileComponent_1.PatientProfile }
                     ]),
@@ -55,7 +55,8 @@ System.register(["angular2/platform/browser", "angular2/core", 'angular2/http', 
             })();
             // Bootstrap App
             browser_1.bootstrap(Ng2App, [http_1.HTTP_PROVIDERS,
-                router_1.ROUTER_PROVIDERS]);
+                router_1.ROUTER_PROVIDERS
+            ]);
         }
     }
 });

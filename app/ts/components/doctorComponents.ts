@@ -1,9 +1,7 @@
 import { Component, OnInit } from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
-import { Router } from 'angular2/router';
-import { RouteParams, RouterLink, LocationStrategy } from 'angular2/router';
+import { RouteParams, RouterLink, LocationStrategy, Router } from 'angular2/router';
 import { DoctorService } from '.././services/doctorService';
-import {DoctorProfile} from './components/doctorProfileComponent';
 
 // Doctor class
 export class Doctor {
@@ -13,8 +11,8 @@ export class Doctor {
     public gender: string,
     public bio: string,
     public speciality: string,
-    public education: string) {
-  }
+    public education: string
+  ){}
 }
 
 @Component({
@@ -38,7 +36,7 @@ export class Doctor {
               <hr/>
               <div class="row rating-desc">
                 <div class="col-md-12">
-                  <a (click)="showProfile(doctor.id)">View Details</a>
+                  <a (click)="showDoctorProfile(doctor.id)">View Details</a>
                 </div>
               </div>
             </div>
@@ -66,10 +64,7 @@ export class DoctorsList implements OnInit{
     this.doctors = res.doctors_list;
   }
 
-  showProfile(n): void{
+  showDoctorProfile(n): void{
     this._router.navigate(['DoctorProfile', {id: n}])
   }
 }
-
-
-
