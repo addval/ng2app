@@ -18,8 +18,8 @@ export class Doctor {
 
 @Component({
   selector: 'doctors-list',
-  providers: [DoctorService],
-  directives:[RouterLink,CORE_DIRECTIVES],
+  providers: [ DoctorService ],
+  directives: [ RouterLink, CORE_DIRECTIVES ],
   template:
   `
     <div class="row">
