@@ -10,7 +10,11 @@ import {DoctorService} from '.././services/doctorService';
     directives:[RouterLink,CORE_DIRECTIVES],
     template:
     `
-    <div>Doctor detail will come here</div>
+    <div>
+    <h2>{{doctorDetail.title}}</h2>
+                        <p><strong>About: </strong> {{doctorDetail.bio}} </p>
+                        <p><strong>Speciality: </strong> {{doctorDetail.speciality}} </p>
+    </div>
     <div class="col-xs-12 divider text-center">
        <h2>Patient List</h2>
     </div>
@@ -27,6 +31,7 @@ import {DoctorService} from '.././services/doctorService';
 export class DoctorProfile implements OnInit{
 	public docProfileId = "";
 	public patients = [];
+	public doctorDetail = {};
 	constructor(public _doctorService: DoctorService, private _routeparams: RouteParams){}
 
 	ngOnInit():any{
@@ -36,10 +41,19 @@ export class DoctorProfile implements OnInit{
 		this._doctorService
       .getDoctorPatients(this.docProfileId)
       .subscribe((res: any) => this.renderPatients(res));
+
+    this._doctorService
+      .getDoctorDetail(this.docProfileId)
+      .subscribe((res:any) => this.renderDoctorDetail(res));
 	}
 
 	renderPatients(res1: any): void {
     this.patients = res1.patients;
-    console.log(res1);
   }
+
+  renderDoctorDetail(res1: any): void {
+    this.doctorDetail = res1.doctor;
+      console.log(this.doctorDetail)
+  }
+
 }

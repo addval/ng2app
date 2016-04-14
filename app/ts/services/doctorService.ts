@@ -25,8 +25,12 @@ export class DoctorService {
   }
 
   getDoctorPatients(id){
-    console.log(id)
     return this.http.get(`http://private-deaf6-addvalng2app.apiary-mock.com/api/v1/doctors/${id}/patients_list`)
+    .map(result => result.json());
+  }
+
+  getDoctorDetail(id){
+    return this.http.get(`http://private-deaf6-addvalng2app.apiary-mock.com/api/v1/doctors/${id}`)
     .map(result => result.json());
   }
 }

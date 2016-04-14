@@ -37,8 +37,11 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                         .map(function (result) { return result.json(); });
                 };
                 DoctorService.prototype.getDoctorPatients = function (id) {
-                    console.log(id);
                     return this.http.get("http://private-deaf6-addvalng2app.apiary-mock.com/api/v1/doctors/" + id + "/patients_list")
+                        .map(function (result) { return result.json(); });
+                };
+                DoctorService.prototype.getDoctorDetail = function (id) {
+                    return this.http.get("http://private-deaf6-addvalng2app.apiary-mock.com/api/v1/doctors/" + id)
                         .map(function (result) { return result.json(); });
                 };
                 DoctorService = __decorate([
