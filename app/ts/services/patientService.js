@@ -21,17 +21,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
             function (_1) {}],
         execute: function() {
             PatientService = (function () {
-                // static BASE_URL: string = `http://private-deaf6-addvalng2app.apiary-mock.com/api/v1`;
                 function PatientService(http) {
                     this.http = http;
                 }
-                PatientService.prototype.query = function (URL, params) {
-                    var queryURL = "" + PatientService.BASE_URL + URL;
-                    if (params) {
-                        queryURL = queryURL + "?" + params.join('&');
-                    }
-                    return this.http.request(queryURL).map(function (res) { return res.json(); });
-                };
                 PatientService.prototype.getPatientDetail = function (id) {
                     return this.http.get("http://private-deaf6-addvalng2app.apiary-mock.com/api/v1/patients/" + id)
                         .map(function (result) { return result.json(); });
@@ -46,6 +38,3 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
         }
     }
 });
-// export var DOCTOR_PROVIDERS: Array<any> = [
-//   provide(DoctorService, {useClass: DoctorService})
-// ];

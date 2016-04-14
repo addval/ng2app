@@ -1,7 +1,8 @@
 import { Component, OnInit } from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
-import { RouteParams, RouterLink, LocationStrategy } from 'angular2/router';
+import { RouteParams, RouterLink, LocationStrategy, Router } from 'angular2/router';
 import { DoctorService } from '.././services/doctorService';
+import {PatientProfile} from './components/patientProfileComponent';
 
 @Component({
   selector: 'doctor-profile',
