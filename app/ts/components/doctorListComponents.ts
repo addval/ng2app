@@ -4,7 +4,7 @@ import { RouteParams, RouterLink, LocationStrategy, Router } from 'angular2/rout
 import { DoctorService } from '.././services/doctorService';
 
 // Doctor class
-export class Doctor {
+class Doctor {
   constructor(
     public id: number,
     public name: string,
