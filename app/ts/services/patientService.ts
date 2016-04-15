@@ -13,4 +13,9 @@ export class PatientService {
     return this.http.get(`http://private-deaf6-addvalng2app.apiary-mock.com/api/v1/patients/${id}`)
     .map(result => result.json());
   }
+
+  getPatientHistory(id){
+    return this.http.get(`http://private-3f161-addvalng2app.apiary-mock.com/api/v1/patients/${id}/history`)
+    .map(result => result.json());
+  }
 }

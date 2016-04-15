@@ -1,24 +1,29 @@
 {
   "compilerOptions": {
-    "target": "ES5",
-    "module": "system",
+    "target": "es5",
+    "module": "commonjs",
     "moduleResolution": "node",
-    "sourceMap": false,
+    "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false
   },
   "files": [
-    "./app/ts/app.ts",
-    "./app/ts/components/doctorComponents.ts",
+    "node_modules/angular2/typings/browser.d.ts",
+    "./app/ts/boot.ts",
+    "./app/ts/app.component.ts",
+    "./app/ts/vendor.ts",
+    "./app/ts/components/doctorListComponents.ts",
     "./app/ts/components/doctorProfileComponent.ts",
     "./app/ts/components/patientProfileComponent.ts",
+    "./app/ts/components/editPatientProfileComponent.ts",
     "./app/ts/services/doctorService.ts",
     "./app/ts/services/patientService.ts"
   ],
+  "compileOnSave": false,
+  "buildOnSave": false,
   "exclude": [
-    "node_modules",
     "markups"
   ]
 }

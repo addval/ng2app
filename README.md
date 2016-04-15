@@ -6,8 +6,14 @@
   3. npm install
   4. npm run go
 
+#### Clean JS Files
+npm run clean
+
 #### Routes:
 * /doctors -> Shows doctor list
-* /doctors/:id -> Shows doctor profile
-* /patients/:id -> Shoes patient profile
+* /doctorsprofile/:id -> Shows doctor profile
+* /patientsprofile/:id -> Shows patient profile
+* /editpatientprofile/:id -> Edit patient profile
 
+#### APIs:
+http://docs.addvalng2app.apiary.io/
