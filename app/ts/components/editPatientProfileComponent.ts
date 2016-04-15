@@ -24,8 +24,7 @@ import {Router} from 'angular2/router';
 })
 export class EditPatientProfile implements OnInit{
 	public patProfileId = "";
-	public patient_detail = {};
-	public patient = {};
+	// public patient = {};
 
 	public patientModel = {};
 	constructor(public _patientService: PatientService, private _routeparams: RouteParams, private _router: Router){}
@@ -41,13 +40,14 @@ export class EditPatientProfile implements OnInit{
 	}
 
 	renderPatientDetail(res: any) :void{
-		this.patient_detail = res.profile;
-		console.log(this.patient_detail.patient_name);
-		this.patientModel = {patient_name : this.patient_detail.patient_name};
-		// console.log(this.patientModel)
+		let patient_detail = res.profile;
+		console.log(patient_detail);
+		this.patientModel = {patient_name : patient_detail.patient_name};
 	}
 
 	onEditPatient(){
+		// let patientModel = {};
+		console.log(this.patientModel)
 		let patient = {patient_name: this.patientModel.patient_name, patient_id: this.patProfileId};
 		console.log(patient);
 		this._patientService.editPatientDetail(patient)
