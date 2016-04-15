@@ -9,7 +9,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '.././se
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, common_1, router_1, doctorService_1;
-    var Doctor, DoctorsList;
+    var Doctor, DoctorsRow, DoctorsList;
     return {
         setters:[
             function (core_1_1) {
@@ -37,6 +37,33 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '.././se
                 }
                 return Doctor;
             })();
+            DoctorsRow = (function () {
+                function DoctorsRow(_router) {
+                    this._router = _router;
+                    this.onDoctorSelected = new core_1.EventEmitter();
+                }
+                DoctorsRow.prototype.showProfile = function (n) {
+                    // this._router.navigate(['DoctorProfile', {id: n}]);
+                    // this.onDoctorSelected.emit(this.doctor);
+                    console.log(n);
+                    this._router.navigate(['DoctorProfile', { id: n }]);
+                };
+                DoctorsRow.prototype.clicked = function (doctor) {
+                    this.onDoctorSelected.emit(this.doctor);
+                };
+                DoctorsRow = __decorate([
+                    core_1.Component({
+                        selector: 'doctors-row',
+                        directives: [router_1.RouterLink, common_1.CORE_DIRECTIVES],
+                        inputs: ['doctor'],
+                        outputs: ['onDoctorSelected'],
+                        template: "\n      <div class=\"col-md-6\">\n        <div class=\"well well-sm\">\n          <div class=\"row\">\n            <div class=\"col-xs-3 col-md-3 text-center\">\n              <img [src]=\"doctor.profile_pic\" alt=\"bootsnipp\" class=\"img-rounded img-responsive\"/>\n            </div>\n            <div class=\"col-xs-9 col-md-9 section-box\">\n              <h2 (click)='clicked(doctor)'> {{ doctor.title }} </h2>\n              <input type=\"text\" id=\"doctor_name\">\n              <p>{{ doctor.gender }}</p>\n              <p>{{ doctor.education }}</p>\n              <hr/>\n              <div class=\"row rating-desc\">\n                <div class=\"col-md-12\">\n                  <a  (click)=\"showProfile(doctor.id)\">View Details</a>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n  "
+                    }), 
+                    __metadata('design:paramtypes', [router_1.Router])
+                ], DoctorsRow);
+                return DoctorsRow;
+            })();
+            exports_1("DoctorsRow", DoctorsRow);
             DoctorsList = (function () {
                 function DoctorsList(_doctorService, _router) {
                     this._doctorService = _doctorService;
@@ -55,12 +82,16 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '.././se
                 DoctorsList.prototype.showDoctorProfile = function (n) {
                     this._router.navigate(['DoctorProfile', { id: n }]);
                 };
+                DoctorsList.prototype.doctorSelected = function (doctor) {
+                    console.log(doctor);
+                    alert(doctor.title);
+                };
                 DoctorsList = __decorate([
                     core_1.Component({
                         selector: 'doctors-list',
                         providers: [doctorService_1.DoctorService],
-                        directives: [router_1.RouterLink, common_1.CORE_DIRECTIVES],
-                        template: "\n    <div class=\"row\">\n      <!--result start-->\n      <div class=\"col-md-6\" *ngFor=\"#doctor of doctors\">\n        <div class=\"well well-sm\">\n          <div class=\"row\">\n            <div class=\"col-xs-3 col-md-3 text-center\">\n              <img [src]=\"doctor.profile_pic\" alt=\"bootsnipp\" class=\"img-rounded img-responsive\"/>\n            </div>\n            <div class=\"col-xs-9 col-md-9 section-box\">\n              <h2> {{ doctor.title }} </h2>\n              <p>{{ doctor.gender }}</p>\n              <p>{{ doctor.education }}</p>\n              <hr/>\n              <div class=\"row rating-desc\">\n                <div class=\"col-md-12\">\n                  <a (click)=\"showDoctorProfile(doctor.id)\">View Details</a>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <!--result end-->\n    </div>\n  "
+                        directives: [router_1.RouterLink, common_1.CORE_DIRECTIVES, DoctorsRow],
+                        template: "\n    <div class=\"row\">\n      <!--result start-->\n      <doctors-row\n        *ngFor=\"#doctor of doctors\" (onDoctorSelected)=\"doctorSelected($event)\"\n        [doctor]=\"doctor\">\n      </doctors-row>\n      <!--result end-->\n    </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [doctorService_1.DoctorService, router_1.Router])
                 ], DoctorsList);
