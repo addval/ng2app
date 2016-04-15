@@ -28,6 +28,7 @@ class PatientHistory{
   `
     <div class="col-xs-12 col-sm-8">
       <h3>{{patientDetail.patient_name}}</h3>
+      <p><strong>Gender: </strong> {{patientDetail.patient_gender}} </p>
       <p><strong>age: </strong> {{patientDetail.patient_age}} </p>
       <p><strong>email: </strong> {{patientDetail.patient_email}} </p>
       <p><strong>Phone Number: </strong> {{patientDetail.patient_phone_number}} </p>
