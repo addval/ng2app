@@ -9,15 +9,20 @@ import { PatientService } from '.././services/patientService';
   directives: [ RouterLink, CORE_DIRECTIVES ],
   template:
   `
-    <h1>Patient Profile ID: {{patientID}}</h1>
+    <h1>Patient Profile ID: {{patientId}}</h1>
+    <p><a [routerLink]="['/EditPatientProfile', {id: patientId}]">Edit Profile</a></p>
   `
 })
 export class PatientProfile implements OnInit{
   public patientId = "";
 
-  constructor(public _patientService: PatientService, private _routeparams: RouteParams){}
+  constructor(public _patientService: PatientService, private _routeparams: RouteParams, private _router: Router){}
 
   ngOnInit():any{
     this.patientId = this._routeparams.get("id");
+  }
+
+  editPatientProfile(n): void{
+    this._router.navigate(['EditPatientProfile', {id: n}]);
   }
 }

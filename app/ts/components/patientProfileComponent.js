@@ -26,22 +26,26 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '.././se
             }],
         execute: function() {
             PatientProfile = (function () {
-                function PatientProfile(_patientService, _routeparams) {
+                function PatientProfile(_patientService, _routeparams, _router) {
                     this._patientService = _patientService;
                     this._routeparams = _routeparams;
+                    this._router = _router;
                     this.patientId = "";
                 }
                 PatientProfile.prototype.ngOnInit = function () {
                     this.patientId = this._routeparams.get("id");
+                };
+                PatientProfile.prototype.editPatientProfile = function (n) {
+                    this._router.navigate(['EditPatientProfile', { id: n }]);
                 };
                 PatientProfile = __decorate([
                     core_1.Component({
                         selector: 'patient-profile',
                         providers: [patientService_1.PatientService],
                         directives: [router_1.RouterLink, common_1.CORE_DIRECTIVES],
-                        template: "\n    <h1>Patient Profile ID: {{patientID}}</h1>\n  "
+                        template: "\n    <h1>Patient Profile ID: {{patientId}}</h1>\n    <p><a [routerLink]=\"['/EditPatientProfile', {id: patientId}]\">Edit Profile</a></p>\n  "
                     }), 
-                    __metadata('design:paramtypes', [patientService_1.PatientService, router_1.RouteParams])
+                    __metadata('design:paramtypes', [patientService_1.PatientService, router_1.RouteParams, router_1.Router])
                 ], PatientProfile);
                 return PatientProfile;
             })();

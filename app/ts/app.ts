@@ -13,6 +13,8 @@ import {EditPatientProfile} from './components/editPatientProfileComponent';
 import {
   ROUTER_DIRECTIVES,
   ROUTER_PROVIDERS,
+  HashLocationStrategy,
+  LocationStrategy,
   Router,
   RouteConfig
 } from 'angular2/router';
@@ -27,7 +29,6 @@ import {
 @Component({
   selector: 'ng2app',
   directives: [ ROUTER_DIRECTIVES ],
-  providers:[ ROUTER_PROVIDERS ],
   template:
   `
     <router-outlet></router-outlet>
@@ -39,6 +40,7 @@ class Ng2App{
 // Bootstrap App
 bootstrap(Ng2App,
   [ HTTP_PROVIDERS,
-    ROUTER_PROVIDERS
+    ROUTER_PROVIDERS,
+    provide(LocationStrategy, { useClass: HashLocationStrategy })
   ]
 );

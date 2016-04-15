@@ -50,7 +50,6 @@ System.register(["angular2/platform/browser", "angular2/core", 'angular2/http', 
                     core_1.Component({
                         selector: 'ng2app',
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [router_1.ROUTER_PROVIDERS],
                         template: "\n    <router-outlet></router-outlet>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
@@ -59,7 +58,8 @@ System.register(["angular2/platform/browser", "angular2/core", 'angular2/http', 
             })();
             // Bootstrap App
             browser_1.bootstrap(Ng2App, [http_1.HTTP_PROVIDERS,
-                router_1.ROUTER_PROVIDERS
+                router_1.ROUTER_PROVIDERS,
+                core_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy })
             ]);
         }
     }

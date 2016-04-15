@@ -28,10 +28,14 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                     return this.http.get("http://private-deaf6-addvalng2app.apiary-mock.com/api/v1/patients/" + id)
                         .map(function (result) { return result.json(); });
                 };
-                PatientService.prototype.editPatientDetail = function () {
-                    var jsonObj = JSON.stringify({ patient_name: patient_name });
-                    var params = 'json=' + jsonObj;
-                    return this.http.post("http://private-deaf6-addvalng2app.apiary-mock.com/api/v1/patients/" + id, params)
+                PatientService.prototype.editPatientDetail = function (patient_object) {
+                    var jsonObj = JSON.stringify({ patient_name: patient_object.patient_name });
+                    var params = 'patient_name=' + jsonObj;
+                    var headers = new http_1.Headers();
+                    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+                    return this.http.post("http://private-anon-6e80b3cfa-addvalng2app.apiary-mock.com/api/v1/patients/" + patient_object.patient_id, params, {
+                        headers: headers
+                    })
                         .map(function (result) { return result.json(); });
                 };
                 PatientService = __decorate([

@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '.././se
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, patientService_1;
+    var core_1, common_1, router_1, patientService_1, router_2;
     var EditPatientProfile;
     return {
         setters:[
@@ -20,49 +20,56 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '.././se
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+                router_2 = router_1_1;
             },
             function (patientService_1_1) {
                 patientService_1 = patientService_1_1;
             }],
         execute: function() {
             EditPatientProfile = (function () {
-                function EditPatientProfile(_patientService, _routeparams) {
+                function EditPatientProfile(_patientService, _routeparams, _router) {
                     this._patientService = _patientService;
                     this._routeparams = _routeparams;
+                    this._router = _router;
                     this.patProfileId = "";
-                    this.patientDetail = {};
+                    this.patient_detail = {};
                     this.patient = {};
-                    this.patientName = "";
+                    this.patientModel = {};
                 }
                 EditPatientProfile.prototype.ngOnInit = function () {
                     var _this = this;
                     this.patProfileId = this._routeparams.get("id");
-                    this.newContact = { patient_name: this.patProfileId };
-                    // console.log(this.patProfileId);
+                    // this.patientModel = {patient_name : this.patProfileId};
+                    console.log(this.patProfileId);
                     this._patientService
                         .getPatientDetail(this.patProfileId)
                         .subscribe(function (res) { return _this.renderPatientDetail(res); });
                 };
                 EditPatientProfile.prototype.renderPatientDetail = function (res) {
                     this.patient_detail = res.profile;
-                    console.log(this.patient_detail);
-                    // this.newContact = {patient_name : this.patient_detail.patient_name};
-                    // console.log(this.newContact)
+                    console.log(this.patient_detail.patient_name);
+                    this.patientModel = { patient_name: this.patient_detail.patient_name };
+                    // console.log(this.patientModel)
                 };
-                EditPatientProfile.prototype.onEditPatient = function (_patientName) {
-                    var patient = { patient_name: _patientName, patient_id: this.patProfileId };
+                EditPatientProfile.prototype.onEditPatient = function () {
+                    var _this = this;
+                    var patient = { patient_name: this.patientModel.patient_name, patient_id: this.patProfileId };
                     console.log(patient);
-                    // this._patientService.editPatientDetail(patient);
-                    console.log('done');
+                    this._patientService.editPatientDetail(patient)
+                        .subscribe(function (res) { return _this.profileEdited(res); }, function (error) { return console.log('here ' + error); }, function () { return console.log("finished"); });
+                };
+                EditPatientProfile.prototype.profileEdited = function (res) {
+                    console.log(res);
+                    this._router.navigate(['PatientProfile', { id: this.patProfileId }]);
                 };
                 EditPatientProfile = __decorate([
                     core_1.Component({
                         selector: 'edit-patient-profile',
                         providers: [patientService_1.PatientService],
                         directives: [router_1.RouterLink, common_1.CORE_DIRECTIVES],
-                        template: "\n    <div class=\"row\">\n        <form role=\"form\" #myForm=\"ngForm\" (ngSubmit) = \"onEditPatient()\">\n            <div class=\"form-group\">\n              <input type=\"text\" class=\"form-control\" placeholder=\"Patient Name\"\n              ngControl = \"patient_name\" [(ngModel)] = \"newContact.patient_name\">\n            </div>\n            <button type=\"submit\" class=\"btn btn-default\">Edit</button>\n        </form>\n    </div>\n    "
+                        template: "\n    <div class=\"row\">\n        <form role=\"form\" #myForm=\"ngForm\" (ngSubmit) = \"onEditPatient()\">\n            <div class=\"form-group\">\n            <label for=\"patient_name\">Patient Name</label>\n              <input type=\"text\" class=\"form-control\" placeholder=\"Patient Name\" id=\"patient_name\"\n              ngControl = \"patient_name\" [(ngModel)] = \"patientModel.patient_name\">\n            </div>\n            <button type=\"submit\" class=\"btn btn-default\">Edit</button>\n        </form>\n    </div>\n    "
                     }), 
-                    __metadata('design:paramtypes', [patientService_1.PatientService, router_1.RouteParams])
+                    __metadata('design:paramtypes', [patientService_1.PatientService, router_1.RouteParams, router_2.Router])
                 ], EditPatientProfile);
                 return EditPatientProfile;
             })();
