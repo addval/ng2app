@@ -5,7 +5,7 @@ import { Component, OnInit } from "angular2/core";
 import { DoctorsList } from './components/doctorListComponents';
 import { DoctorProfile } from './components/doctorProfileComponent';
 import { PatientProfile } from './components/patientProfileComponent';
-import {EditPatientProfile} from './components/editPatientProfileComponent';
+import { EditPatientProfile } from './components/editPatientProfileComponent';
 
 // Routes
 import {

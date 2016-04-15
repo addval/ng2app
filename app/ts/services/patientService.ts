@@ -14,14 +14,17 @@ export class PatientService {
     .map(result => result.json());
   }
 
-  editPatientDetail(patient_object) {
-    var jsonObj = JSON.stringify({patient_name: patient_object.patient_name});
-    var params = 'patient_name=' + jsonObj;
-    var headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    return this.http.post(`http://private-anon-6e80b3cfa-addvalng2app.apiary-mock.com/api/v1/patients/${patient_object.patient_id}`, params, {
-      headers: headers
-    })
+  editPatientDetail(name, id) {
+    // var jsonObj = JSON.stringify({patient_name: patient_object.patient_name});
+    var params = 'patient_name=' + name;
+    // var headers = new Headers();
+    // headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    return this.http.post(`http://private-711c8-ng2app.apiary-mock.com/api/v1/patients/${id}`)
+    .map(result => result.json());
+  }
+
+  getPatientHistory(id){
+    return this.http.get(`http://private-3f161-addvalng2app.apiary-mock.com/api/v1/patients/${id}/history`)
     .map(result => result.json());
   }
 }
