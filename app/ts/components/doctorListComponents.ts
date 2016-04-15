@@ -30,7 +30,6 @@ class Doctor {
             </div>
             <div class="col-xs-9 col-md-9 section-box">
               <h2 (click)='clicked(doctor)'> {{ doctor.title }} </h2>
-              <input type="text" id="doctor_name">
               <p>{{ doctor.gender }}</p>
               <p>{{ doctor.education }}</p>
               <hr/>
@@ -53,9 +52,6 @@ export class DoctorsRow {
     this.onDoctorSelected = new EventEmitter();
   }
   showProfile(n): void{
-    // this._router.navigate(['DoctorProfile', {id: n}]);
-    // this.onDoctorSelected.emit(this.doctor);
-    console.log(n)
     this._router.navigate(['DoctorProfile', {id: n}])
   }
 
@@ -102,7 +98,6 @@ export class DoctorsList implements OnInit{
     this._router.navigate(['DoctorProfile', {id: n}])
   }
   doctorSelected(doctor: Doctor){
-    console.log(doctor)
     alert(doctor.title)
 
   }

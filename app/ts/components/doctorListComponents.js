@@ -43,9 +43,6 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '.././se
                     this.onDoctorSelected = new core_1.EventEmitter();
                 }
                 DoctorsRow.prototype.showProfile = function (n) {
-                    // this._router.navigate(['DoctorProfile', {id: n}]);
-                    // this.onDoctorSelected.emit(this.doctor);
-                    console.log(n);
                     this._router.navigate(['DoctorProfile', { id: n }]);
                 };
                 DoctorsRow.prototype.clicked = function (doctor) {
@@ -57,7 +54,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '.././se
                         directives: [router_1.RouterLink, common_1.CORE_DIRECTIVES],
                         inputs: ['doctor'],
                         outputs: ['onDoctorSelected'],
-                        template: "\n      <div class=\"col-md-6\">\n        <div class=\"well well-sm\">\n          <div class=\"row\">\n            <div class=\"col-xs-3 col-md-3 text-center\">\n              <img [src]=\"doctor.profile_pic\" alt=\"bootsnipp\" class=\"img-rounded img-responsive\"/>\n            </div>\n            <div class=\"col-xs-9 col-md-9 section-box\">\n              <h2 (click)='clicked(doctor)'> {{ doctor.title }} </h2>\n              <input type=\"text\" id=\"doctor_name\">\n              <p>{{ doctor.gender }}</p>\n              <p>{{ doctor.education }}</p>\n              <hr/>\n              <div class=\"row rating-desc\">\n                <div class=\"col-md-12\">\n                  <a  (click)=\"showProfile(doctor.id)\">View Details</a>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n  "
+                        template: "\n      <div class=\"col-md-6\">\n        <div class=\"well well-sm\">\n          <div class=\"row\">\n            <div class=\"col-xs-3 col-md-3 text-center\">\n              <img [src]=\"doctor.profile_pic\" alt=\"bootsnipp\" class=\"img-rounded img-responsive\"/>\n            </div>\n            <div class=\"col-xs-9 col-md-9 section-box\">\n              <h2 (click)='clicked(doctor)'> {{ doctor.title }} </h2>\n              <p>{{ doctor.gender }}</p>\n              <p>{{ doctor.education }}</p>\n              <hr/>\n              <div class=\"row rating-desc\">\n                <div class=\"col-md-12\">\n                  <a  (click)=\"showProfile(doctor.id)\">View Details</a>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [router_1.Router])
                 ], DoctorsRow);
@@ -83,7 +80,6 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '.././se
                     this._router.navigate(['DoctorProfile', { id: n }]);
                 };
                 DoctorsList.prototype.doctorSelected = function (doctor) {
-                    console.log(doctor);
                     alert(doctor.title);
                 };
                 DoctorsList = __decorate([
