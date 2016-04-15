@@ -30,14 +30,25 @@ class Doctor {
             </div>
             <div class="col-xs-9 col-md-9 section-box">
               <h2 (click)='clicked(doctor)'> {{ doctor.title }} </h2>
+              <div class = "hidden" id ="binded">
+              <p>One Way Binding
+                <input id = "title" #title value = {{doctor.title}}>
+                <button (click)="changeTitle(doctor, title.value)">Change Name</button>
+              <p>
+              <p>
+                Two-Way Binding<input id = "title2" [(ngModel)]= "doctor.title">
+              </p>
+              </div>
               <p>{{ doctor.gender }}</p>
               <p>{{ doctor.education }}</p>
               <hr/>
               <div class="row rating-desc">
                 <div class="col-md-12">
-                  <a  (click)="showProfile(doctor.id)">View Details</a>
+
+                  <a (click)="showProfile(doctor.id)">View Details</a>
                 </div>
               </div>
+              <button id = "showbinding" (click)="showSection()">Try Binding</button>
             </div>
           </div>
         </div>
@@ -57,6 +68,19 @@ export class DoctorsRow {
 
   clicked(doctor: Doctor): void {
     this.onDoctorSelected.emit(this.doctor);
+  }
+
+  changeTitle(doctor, title){
+    doctor.title = title;
+  }
+
+  showSection(){
+    var el=document.querySelectorAll("#binded");
+    console.log(el);
+    for(var i=0;i<el.length;i++){
+      el[i].className="binded";
+    }
+
   }
 }
 
@@ -98,7 +122,7 @@ export class DoctorsList implements OnInit{
     this._router.navigate(['DoctorProfile', {id: n}])
   }
   doctorSelected(doctor: Doctor){
-    alert(doctor.gender);
+    alert(doctor.gender)
 
   }
 }
