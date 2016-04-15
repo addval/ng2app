@@ -6,9 +6,8 @@
     "clean": "rm -f ./app/ts/*.js; rm -f ./app/ts/components/*.js rm -f ./app/ts/services/*.js rm -f ./app/ts/*.js.map;",
     "tsc": "./node_modules/.bin/tsc",
     "tsc:w": "./node_modules/.bin/tsc -w",
-    "build":"webpack",
+    "build": "webpack",
     "go": "webpack-dev-server"
-     
   },
   "license": "ISC",
   "dependencies": {

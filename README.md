@@ -6,6 +6,9 @@
   3. npm install
   4. npm run go
 
+#### Clean JS Files
+npm run clean
+
 #### Routes:
 * /doctors -> Shows doctor list
 * /doctorsprofile/:id -> Shows doctor profile
