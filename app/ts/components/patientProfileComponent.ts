@@ -4,18 +4,34 @@ import { RouteParams, RouterLink, LocationStrategy, Router } from 'angular2/rout
 import { PatientService } from '.././services/patientService';
 
 @Component({
-  selector: 'patient-profile',
+  selector: 'patient-history',
   providers: [ PatientService ],
-  directives: [ RouterLink, CORE_DIRECTIVES ],
   template:
   `
-  <div class="well profile">
+    <div class="col-xs-12 divider text-center">
+      <h2>History</h2>
+    </div>
+    <div class="col-xs-12  text-left">
+      <p>This is simple text</p>
+      <p>This is simple text</p>
+      <p>This is simple text</p>
+    </div>
+  `
+})
+class PatientHistory{
+}
+
+@Component({
+  selector: 'patient-profile',
+  providers: [ PatientService ],
+  directives: [ PatientHistory, RouterLink, CORE_DIRECTIVES ],
+  template:
+  `
     <div class="col-xs-12  text-center">
-        <h2>Profile</h2>
+      <h2>Profile</h2>
     </div>
     <div class="col-sm-12">
       <div class="col-xs-12 col-sm-8">
-        <h3>{{patientDetail.patientId}}</h3>
         <h3>{{patientDetail.patient_name}}</h3>
         <p><strong>age: </strong> {{patientDetail.patient_age}} </p>
         <p><strong>email: </strong> {{patientDetail.patient_email}} </p>
@@ -27,15 +43,7 @@ import { PatientService } from '.././services/patientService';
         </figure>
       </div>
     </div>
-    <div class="col-xs-12 divider text-center">
-      <h2>History</h2>
-    </div>
-    <div class="col-xs-12  text-left">
-      <p>This is simple text</p>
-      <p>This is simple text</p>
-      <p>This is simple text</p>
-    </div>
-  </div>
+    <patient-history></patient-history>
   `
 })
 
