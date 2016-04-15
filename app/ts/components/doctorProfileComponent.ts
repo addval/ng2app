@@ -21,7 +21,7 @@ import { DoctorService } from '.././services/doctorService';
       <div class="col-xs-12 col-sm-4 emphasis" *ngFor="#patient of patients">
         <img src="http://gomerblog.com/wp-content/uploads/2015/12/angry-patient.jpg" alt="..." class="img-thumbnail">
         <h4>{{patient.patient_name}}</h4>
-        <p><a (click)="showPatientProfile(patient.id)">View Profile</a></p>
+        <p><a (click)="showPatientProfile(patient.patient_id)">View Profile</a></p>
       </div>
     </div>
   `

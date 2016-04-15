@@ -30,16 +30,24 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', '.././se
                     this._patientService = _patientService;
                     this._routeparams = _routeparams;
                     this.patientId = "";
+                    this.patientDetail = {};
                 }
                 PatientProfile.prototype.ngOnInit = function () {
+                    var _this = this;
                     this.patientId = this._routeparams.get("id");
+                    this._patientService
+                        .getPatientDetail(this.patientId)
+                        .subscribe(function (res) { return _this.showPatientDetails(res); });
+                };
+                PatientProfile.prototype.showPatientDetails = function (result) {
+                    this.patientDetail = result.profile;
                 };
                 PatientProfile = __decorate([
                     core_1.Component({
                         selector: 'patient-profile',
                         providers: [patientService_1.PatientService],
                         directives: [router_1.RouterLink, common_1.CORE_DIRECTIVES],
-                        template: "\n    <h1>Patient Profile ID: {{patientID}}</h1>\n  "
+                        template: "\n  <div class=\"well profile\">\n    <div class=\"col-xs-12  text-center\">\n        <h2>Profile</h2>\n    </div>\n    <div class=\"col-sm-12\">\n      <div class=\"col-xs-12 col-sm-8\">\n        <h3>{{patientDetail.patientId}}</h3>\n        <h3>{{patientDetail.patient_name}}</h3>\n        <p><strong>age: </strong> {{patientDetail.patient_age}} </p>\n        <p><strong>email: </strong> {{patientDetail.patient_email}} </p>\n        <p><strong>Phone Number: </strong> {{patientDetail.patient_phone_number}} </p>\n      </div>\n      <div class=\"col-xs-12 col-sm-4 text-center\">\n        <figure>\n          <img src={{patientDetail.profile_pic}} alt=\"\" class=\"img-circle img-responsive\">\n        </figure>\n      </div>\n    </div>\n    <div class=\"col-xs-12 divider text-center\">\n      <h2>History</h2>\n    </div>\n    <div class=\"col-xs-12  text-left\">\n      <p>This is simple text</p>\n      <p>This is simple text</p>\n      <p>This is simple text</p>\n    </div>\n  </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [patientService_1.PatientService, router_1.RouteParams])
                 ], PatientProfile);
