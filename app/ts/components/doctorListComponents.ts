@@ -98,7 +98,7 @@ export class DoctorsList implements OnInit{
     this._router.navigate(['DoctorProfile', {id: n}])
   }
   doctorSelected(doctor: Doctor){
-    alert(doctor.title)
+    alert(doctor.gender);
 
   }
 }
