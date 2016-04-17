@@ -18,6 +18,7 @@
     "./app/ts/components/doctorProfileComponent.ts",
     "./app/ts/components/patientProfileComponent.ts",
     "./app/ts/components/editPatientProfileComponent.ts",
+    "./app/ts/components/jqueryComponent.ts",
     "./app/ts/services/doctorService.ts",
     "./app/ts/components/editPatientProfileComponent.ts",
     "./app/ts/services/patientService.ts"

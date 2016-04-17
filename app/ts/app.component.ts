@@ -6,6 +6,7 @@ import { DoctorsList } from './components/doctorListComponents';
 import { DoctorProfile } from './components/doctorProfileComponent';
 import { PatientProfile } from './components/patientProfileComponent';
 import { EditPatientProfile } from './components/editPatientProfileComponent';
+import {JqueryComponent} from './components/jqueryComponent.ts';
 
 // Routes
 import {
@@ -20,7 +21,9 @@ import {
   { path: '/doctors', name: 'DoctorsList', component: DoctorsList, useAsDefault:true },
   { path: '/doctorsprofile/:id', name: 'DoctorProfile', component: DoctorProfile },
   { path: '/patientsprofile/:id', name: 'PatientProfile', component: PatientProfile },
-  { path: '/editpatientprofile/:id', name: 'EditPatientProfile', component: EditPatientProfile}
+  { path: '/editpatientprofile/:id', name: 'EditPatientProfile', component: EditPatientProfile},
+  { path: '/jquery', name: 'Jquery', component: JqueryComponent }
+
 ])
 
 // Main App
